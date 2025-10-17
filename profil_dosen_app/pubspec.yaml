@@ -36,4 +36,4 @@ flutter:
 
   # Aset harus menggunakan garis miring '/' dan indentasi yang benar
   assets:
-    - assets/images/kampus.png
+    - assets/images/gedung.jpg
