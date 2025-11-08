@@ -32,24 +32,33 @@ class BiodataApp extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
                 child: Column(
                   children: [
-                    // FOTO PROFIL ANDA DI SINI
-                    // Kode ini sekarang lebih robust dengan penanganan error
-                    ClipOval(
-                      child: Image.asset(
-                        'assets/images/foto.jpg', // <<-- Pastikan NAMA FILE di sini SAMA dengan nama file Anda
-                        width: 140,
-                        height: 140,
+                    // =======================================================
+                    // FOTO PROFIL ANDA DI SINI (SUDAH DIPERBAIKI)
+                    // =======================================================
+                    ClipOval( // Memotong gambar menjadi lingkaran
+                      child: Image.asset( // Mendukung width, height, fit, dan errorBuilder
+                        'assets/novi.jpg',
+                        width: 160, // Ukuran lingkaran (radius 80 * 2)
+                        height: 160,
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           // Fallback jika gambar tidak ditemukan atau gagal dimuat
-                          return const CircleAvatar(
-                            radius: 70,
-                            backgroundColor: Colors.blueGrey,
-                            child: Icon(Icons.person, size: 80, color: Colors.white),
+                          return const SizedBox(
+                            width: 160,
+                            height: 160,
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Colors.blueGrey,
+                              ),
+                              child: Icon(Icons.person, size: 80, color: Colors.white),
+                            ),
                           );
                         },
                       ),
                     ),
+                    // =======================================================
+
                     const SizedBox(height: 20),
                     const Text(
                       'Noviana Safitri',
