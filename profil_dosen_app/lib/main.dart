@@ -180,7 +180,7 @@ const List<Dosen> daftarDosenDummy = [
 // Data Dummy Mahasiswa (HANYA UNTUK LOGIN SIMULASI)
 const List<Mahasiswa> daftarMahasiswaDummy = [
   // AKUN SIMULASI UTAMA
-  const Mahasiswa(
+  Mahasiswa(
     nama: "Noviana Safitri",
     nim: "701230017",
     jurusan: "Sistem Informasi",
@@ -188,7 +188,7 @@ const List<Mahasiswa> daftarMahasiswaDummy = [
     dosenNim: "0020017503", // NIDN Ir. Cahyo Wibowo
   ),
   // AKUN LAIN
-  const Mahasiswa(
+  Mahasiswa(
     nama: "Aulia Nur Kholisah",
     nim: "2022001",
     jurusan: "Teknik Informatika",
@@ -353,7 +353,7 @@ class _LoginScreenState extends State<LoginScreen> {
             image: const AssetImage('assets/images/gedung.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.5),
+              Colors.black.withAlpha(0xE6),
               BlendMode.darken,
             ),
           ),
@@ -385,11 +385,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   Container(
                     padding: const EdgeInsets.all(20.0),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.9),
+                      color: Colors.white.withAlpha(0xE10),
                       borderRadius: BorderRadius.circular(15),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.black.withAlpha(230),
                           blurRadius: 10,
                           offset: const Offset(0, 5),
                         ),
@@ -559,11 +559,11 @@ class MahasiswaProfileScreen extends StatelessWidget {
           // --- INFORMASI AKADEMIK ---
           Text("Informasi Akademik", style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.primary)),
           const SizedBox(height: 10),
-          _buildInfoRow(context, Icons.school, "Jurusan", mahasiswa.jurusan, Theme.of(context).colorScheme.primary.withOpacity(0.08)),
+          _buildInfoRow(context, Icons.school, "Jurusan", mahasiswa.jurusan, Theme.of(context).colorScheme.primary.withAlpha(204)),
           const SizedBox(height: 15),
-          _buildInfoRow(context, Icons.calendar_month, "Angkatan", mahasiswa.nim.substring(0, 4), Theme.of(context).colorScheme.secondary.withOpacity(0.08)),
+          _buildInfoRow(context, Icons.calendar_month, "Angkatan", mahasiswa.nim.substring(0, 4), Theme.of(context).colorScheme.secondary.withAlpha(178)),
           const SizedBox(height: 15),
-          _buildInfoRow(context, Icons.info_outline, "Status", "Aktif", Theme.of(context).colorScheme.primary.withOpacity(0.08)),
+          _buildInfoRow(context, Icons.info_outline, "Status", "Aktif", Theme.of(context).colorScheme.primary.withAlpha(0xE8)),
           const SizedBox(height: 30),
 
           // --- DOSEN PEMBIMBING AKADEMIK (FITUR BARU) ---
@@ -647,7 +647,7 @@ class DosenCardItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${dosen.kepakaran}',
+                      dosen.kepakaran,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey[600]),
                     ),
                     Text(
@@ -776,7 +776,7 @@ class _DaftarDosenScreenState extends State<DaftarDosenScreen> {
 
   final List<String> _fakultasList = [
     'Semua Fakultas',
-    ...daftarDosenDummy.map((dosen) => dosen.fakultas).toSet().toList(),
+    ...daftarDosenDummy.map((dosen) => dosen.fakultas).toSet(),
   ];
 
   String _selectedFakultas = 'Semua Fakultas';
@@ -813,12 +813,12 @@ class _DaftarDosenScreenState extends State<DaftarDosenScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
               child: DropdownButtonFormField<String>(
-                value: _selectedFakultas,
+                initialValue: _selectedFakultas,
                 isExpanded: true,
                 decoration: InputDecoration(
                   labelText: 'Filter Fakultas',
                   filled: true,
-                  fillColor: Theme.of(context).colorScheme.secondary.withOpacity(0.15),
+                  fillColor: Theme.of(context).colorScheme.secondary.withAlpha(0x15),
                   contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -955,13 +955,13 @@ class DetailDosenScreen extends StatelessWidget {
                 Chip(
                   avatar: const Icon(Icons.apartment, size: 18),
                   label: Text(dosen.fakultas),
-                  backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                  backgroundColor: Theme.of(context).colorScheme.primary.withAlpha(0xE1),
                   labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary, fontWeight: FontWeight.w500),
                 ),
                 Chip(
                   avatar: const Icon(Icons.assignment, size: 18),
                   label: Text(dosen.prodi),
-                  backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.1),
+                  backgroundColor: Theme.of(context).colorScheme.secondary.withAlpha(0xE1),
                   labelStyle: TextStyle(color: Theme.of(context).colorScheme.secondary, fontWeight: FontWeight.w500),
                 ),
               ],
@@ -976,14 +976,14 @@ class DetailDosenScreen extends StatelessWidget {
                   avatar: const Icon(Icons.email, size: 18, color: Colors.white),
                   label: const Text('Email', style: TextStyle(color: Colors.white)),
                   onPressed: () => _handleContact(context, "Kirim Email", dosen.email),
-                  backgroundColor: Theme.of(context).colorScheme.primary.withOpacity(0.8),
+                  backgroundColor: Theme.of(context).colorScheme.primary.withAlpha(0xE8),
                 ),
                 const SizedBox(width: 10),
                 ActionChip(
                   avatar: const Icon(Icons.phone, size: 18, color: Colors.white),
                   label: const Text('Telepon', style: TextStyle(color: Colors.white)),
                   onPressed: () => _handleContact(context, "Telepon", "Nomor Rahasia"),
-                  backgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.8),
+                  backgroundColor: Theme.of(context).colorScheme.secondary.withAlpha(0xE8),
                 ),
               ],
             ),
@@ -995,7 +995,7 @@ class DetailDosenScreen extends StatelessWidget {
                 title: 'Bidang Kepakaran',
                 content: dosen.kepakaran,
                 icon: Icons.lightbulb_outline,
-                color: Theme.of(context).colorScheme.primary.withOpacity(0.08)
+                color: Theme.of(context).colorScheme.primary.withAlpha(0xE8)
             ),
 
             const SizedBox(height: 20),
@@ -1005,7 +1005,7 @@ class DetailDosenScreen extends StatelessWidget {
                 title: 'Riwayat Singkat',
                 content: dosen.deskripsi,
                 icon: Icons.description_outlined,
-                color: Theme.of(context).colorScheme.secondary.withOpacity(0.08)
+                color: Theme.of(context).colorScheme.secondary.withAlpha(0xE8)
             ),
           ],
         ),
