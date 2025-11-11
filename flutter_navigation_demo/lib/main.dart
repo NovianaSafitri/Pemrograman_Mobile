@@ -31,6 +31,7 @@ class FlutterNavigationDemo extends StatelessWidget {
           ),
         ),
       ),
+     
       // Definisikan 5 Route Utama
       initialRoute: '/', 
       routes: {
@@ -39,6 +40,7 @@ class FlutterNavigationDemo extends StatelessWidget {
         '/bottom_nav': (context) => const BottomNavScreen(),
         '/replacement': (context) => const ReplacementScreen(), 
       },
+
       // Menangani Named Route yang membawa data
       onGenerateRoute: (settings) {
         if (settings.name == '/named_data') {
