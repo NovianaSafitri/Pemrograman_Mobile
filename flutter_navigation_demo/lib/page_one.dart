@@ -89,8 +89,8 @@ class PageOne extends StatelessWidget {
               onPressed: () {
                 // SnackBar tetap non-const karena menggunakan accentColor
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: const Text('Tombol Coral Coast ditekan!'), 
+                 const SnackBar(
+                    content:  Text('Tombol Coral Coast ditekan!'), 
                     backgroundColor: accentColor,
                   ),
                 );

@@ -117,12 +117,12 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
       ),
       body: _buildGradientBackground( 
-        child: SingleChildScrollView( 
-          padding: const EdgeInsets.all(20.0),
+        child: const SingleChildScrollView( 
+          padding: EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[ 
-              const Text(
+               Text(
                 'Pilih Metode Navigasi:',
                 style: TextStyle(
                   fontSize: 26,
@@ -130,15 +130,15 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.white, 
                 ),
               ),
-              const SizedBox(height: 10),
-              const Text(
+               SizedBox(height: 10),
+               Text(
                 'Eksplorasi 5 teknik utama navigasi Flutter.',
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.white70,
                 ),
               ),
-              const SizedBox(height: 30),
+               SizedBox(height: 30),
 
               // FIX: Hapus SEMUA 'const' dari pemanggilan _InteractiveCardWrapper (SOLUSI)
               _InteractiveCardWrapper( 
@@ -172,9 +172,9 @@ class HomeScreen extends StatelessWidget {
                 onTap: _onPushReplacement,
               ),
               
-              const SizedBox(height: 40),
+               SizedBox(height: 40),
 
-              const _ExplanationCard(),
+               _ExplanationCard(),
             ],
           ),
         ),
@@ -245,7 +245,7 @@ class _ExplanationCard extends StatelessWidget {
           Expanded(
             child:  Text(
               description,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 color: Colors.white, 
               ),
@@ -267,9 +267,9 @@ class _ExplanationCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
+           const Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [ 
+              children:  [ 
                 Icon(Icons.lightbulb, size: 28, color: Colors.amberAccent),
                 SizedBox(width: 10),
                 Expanded( 

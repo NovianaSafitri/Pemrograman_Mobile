@@ -12,7 +12,7 @@ void main() {
 
     // Verifikasi bahwa judul utama formulir ("Berikan Masukan Anda") terlihat.
     expect(find.text('Berikan Masukan Anda'), findsOneWidget);
-    
+
     // Verifikasi bahwa teks motivasi ("Kami Ingin Mendengar Anda!") terlihat.
     expect(find.text('Kami Ingin Mendengar Anda!'), findsOneWidget);
 
